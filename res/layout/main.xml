@@ -4,22 +4,20 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
 		>
-	<TextView
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="Hello World, MyActivity"
-			android:id="@+id/textView"/>
 	<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="start"
+			android:text="open noti"
 			android:id="@+id/start"
-			android:layout_marginTop="70dp" android:layout_below="@+id/textView" android:layout_alignParentLeft="true"
+			android:layout_marginTop="70dp"
+			android:layout_below="@+id/textView"
+			android:layout_alignParentLeft="true"
 			android:layout_marginLeft="49dp"/>
 	<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="stop"
-			android:id="@+id/stop" android:layout_alignTop="@+id/start" android:layout_centerHorizontal="true"/>
+			android:text="close noti"
+			android:id="@+id/stop" android:layout_alignTop="@+id/start" android:layout_alignParentRight="true"
+			android:layout_marginRight="60dp"/>
 </RelativeLayout>
 

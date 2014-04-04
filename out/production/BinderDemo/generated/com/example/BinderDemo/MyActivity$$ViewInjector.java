@@ -7,9 +7,9 @@ import butterknife.ButterKnife.Finder;
 public class MyActivity$$ViewInjector {
   public static void inject(Finder finder, final com.example.BinderDemo.MyActivity target, Object source) {
     View view;
-    view = finder.findById(source, 2131034113);
+    view = finder.findById(source, 2131034112);
     if (view == null) {
-      throw new IllegalStateException("Required view with id '2131034113' for field 'mStart' was not found. If this view is optional add '@Optional' annotation.");
+      throw new IllegalStateException("Required view with id '2131034112' for field 'mStart' was not found. If this view is optional add '@Optional' annotation.");
     }
     target.mStart = (android.widget.Button) view;
     view = finder.findById(source, 2131034114);

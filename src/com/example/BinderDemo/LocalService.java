@@ -17,47 +17,64 @@ import android.widget.Toast;
 public class LocalService extends Service {
 
     private static final String TAG = "LocalService";
+    //通知管理器
     static NotificationManager mNotificationManager;
+    //通知
     static Notification mNotification;
+    //pendingintent
     static PendingIntent mIntentContent;
+    //id
     int mId = 10001;
+    //RequestCode
+    int mRequestCode = 10002;
 
     public IBinder onBind(Intent intent) {
         return new LocalBinder();
     }
 
 
+    /**
+     * 初始化成员变量
+     */
     void initMember() {
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mIntentContent = PendingIntent.getActivity(
                 getApplicationContext(),
-                mId,
+                mRequestCode,
                 new Intent(getApplicationContext(), MyActivity.class),
                 PendingIntent.FLAG_UPDATE_CURRENT);
-        mNotification = new NotificationCompat.Builder(getApplicationContext()).setContentTitle("")
+        mNotification = new NotificationCompat.Builder(getApplicationContext()).setContentTitle("呵呵")
                 .setContentText("你好").setContentInfo("我是通知栏")
                 .setContentIntent(mIntentContent)
-                .setSubText("这是子主体")
+                .setSubText("这是子主题")
+                //一定要设置一个smallicon，否则。。。无显示
                 .setSmallIcon(R.drawable.ic_launcher)
                 .setTicker("开启通知栏喽^_^")
                 .build();
+        //设置通知栏为无法清除
         mNotification.flags |= Notification.FLAG_NO_CLEAR ;
     }
 
-    public void startNoti() {
-        mNotificationManager.notify(100,mNotification);
+    /**
+     * 打开通知栏
+     */
+    public void openNoti() {
+        mNotificationManager.notify(mId,mNotification);
     }
 
-    public void cancelNoti() {
+    /**
+     * 关闭通知栏
+     */
+    public void closeNoti() {
         if (mNotificationManager != null) {
-            mNotificationManager.cancelAll();
+            mNotificationManager.cancel(mId);
             Toast.makeText(getApplicationContext(), "关闭通知栏", Toast.LENGTH_LONG).show();
         }
     }
 
-
     public class LocalBinder extends Binder{
         LocalService getService(){
+            //返回LocalService的引用
             return LocalService.this ;
         }
     }
